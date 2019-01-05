@@ -54,7 +54,7 @@
       <p>
         实付：<span class="red">￥399</span>
       </p>
-      <button>
+      <button @click="goPays">
         立即支付
       </button>
     </div>
@@ -81,7 +81,8 @@ import showCityMask from './showCityMask';
 //引入城市组件
 import cityPicker from './cityPicker'
 
-import axios from 'axios'
+import {isVip} from '@/api/index';
+import {goPay} from '@/api/index'
 
 export default {
   data(){
@@ -115,6 +116,10 @@ export default {
     fetch('/api/ExchangeJiaZhao/getCostList?order_type=1&city_id=110100000000&province_id=110').then(response => response.json())
     .then(data => {
       // data就是我们请求的repos
+    })
+
+    isVip().then(res=>{
+      console.log('isVip...',res)
     })
   },
   methods: {
@@ -165,6 +170,11 @@ export default {
         src: res.data.url
       })
       this.showMask = false;
+    },
+    //支付功能
+    goPays(){
+      console.log(1)
+      goPay()
     }
   }
 }

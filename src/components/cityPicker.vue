@@ -43,6 +43,7 @@ export default {
   mounted () {
     //调用辅助方法，可以获取到签发城市列表
     this.getCityList().then(res=>{
+      
       this.cityColumns = [
         {
           values:this.cityList.map(item=>item.name)
@@ -52,9 +53,6 @@ export default {
         }
       ]
     })
-
-    //获取补发城市列表
-    // this.getCostList()
   },
 
   computed:{
@@ -102,7 +100,6 @@ export default {
     },
     //当左边进行改变的时候，右边随着改变
     cityChange(picker,values){
-      // console.log(picker,values,'picker')
       //获取省份的下标
       let index = this.cityList.findIndex(item=>item.name == values[0])
       // 调用api更新城市数据

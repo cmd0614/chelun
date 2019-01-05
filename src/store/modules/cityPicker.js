@@ -14,6 +14,7 @@ const state = {
 const mutations = {
   //根据数据进行更新
   updateState(state,action){
+    console.log(state,action,'actions....')
     state = Object.assign(state,action)
   }
 }
@@ -40,6 +41,7 @@ const actions = {
     //根据下标进行匹配
     let res = await costList(1,state.cityList[cityIndex].id, state.cityList[proIndex].list[cityIndex].id)
     commit('updateState',{costList:res.data})
+    
   }
 }
 
